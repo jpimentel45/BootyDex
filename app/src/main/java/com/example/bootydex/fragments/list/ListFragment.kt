@@ -47,16 +47,10 @@ class ListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         mBootyCallViewModel = ViewModelProvider(this).get(BootyCallViewModel::class.java)
         observeBootyData()
-//        if(!mBootyCallViewModel.readAllData.value.isNullOrEmpty()) setHasOptionsMenu(true)
         view.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
         }
         return view
-    }
-
-    override fun onResume() {
-        super.onResume()
-
     }
 
     private fun observeBootyData(){
@@ -80,10 +74,6 @@ class ListFragment : Fragment() {
         if(item.itemId == R.id.menu_delete){
             deleteAllBootyCalls()
         }
-//        else{
-//            recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
-//            recyclerView.
-//        }
         return super.onOptionsItemSelected(item)
     }
     private fun deleteAllBootyCalls() {
@@ -94,9 +84,9 @@ class ListFragment : Fragment() {
         }
         builder.setNegativeButton("No"){_ , _ ->
         }
-        builder.setTitle("Delete All Captured Booties?")
+        builder.setTitle("Delete All Booties")
 
-        builder.setMessage("Are you sure you want to delete all your captured BootyCalls")
+        builder.setMessage("Are you sure you want to delete all your captured BootyCalls?")
         builder.create().show()
     }
 
